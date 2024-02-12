@@ -1,4 +1,22 @@
-#root {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .custom-container-out {
+    @apply flex justify-center;
+  }
+
+  .custom-container-in {
+    @apply flex w-[1100px] min-w-[900px] px-10 py-4 mx-8;
+  }
+
+  .selected {
+    @apply text-[#252B42];
+  }
+}
+
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -38,4 +56,4 @@
 
 .read-the-docs {
   color: #888;
-}
+} */
