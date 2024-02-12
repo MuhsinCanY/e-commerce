@@ -9,17 +9,20 @@ import { Link, NavLink } from 'react-router-dom/cjs/react-router-dom.min'
 
 export default function Header() {
   return (
-    <div className="custom-container-out font-[Montserrat] font-bold">
+    <div className="custom-container-out font-[Montserrat] font-bold bg-white">
       <div className="custom-container-in gap-10 justify-between items-center">
         <div className="flex gap-4">
-          <Link to="/" className=" text-2xl tracking-wide min-w-[140px]">
+          <Link
+            to="/"
+            className="text-t-3 text-2xl tracking-wide min-w-[140px]"
+          >
             Bandage
           </Link>
           <nav className="flex gap-6 items-center text-t-2 ">
             <NavLink activeClassName="selected" to="/" exact>
               Home
             </NavLink>
-            <NavLink activeClassName="selected" to="/1">
+            <NavLink activeClassName="selected" to="/shopping">
               Shop
             </NavLink>
             <NavLink activeClassName="selected" to="/2">
