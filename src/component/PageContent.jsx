@@ -6,17 +6,21 @@ import Home from './pageComponent/Home'
 
 export default function PageContent() {
   return (
-    <div className="custom-container-out">
-      <div className="custom-container-in">
-        <Switch>
-          <Route path="/" exact>
+    <Switch>
+      <Route path="/" exact>
+        <div className="custom-container-out py-4 bg-white">
+          <div className="custom-container-in justify-center min-w-full p-0 ">
             <Home />
-          </Route>
-          <Route path="/shopping" exact>
+          </div>
+        </div>
+      </Route>
+      <Route path="/shopping" exact>
+        <div className="custom-container-out py-10 bg-white">
+          <div className="custom-container-in">
             <ProductList />
-          </Route>
-        </Switch>
-      </div>
-    </div>
+          </div>
+        </div>
+      </Route>
+    </Switch>
   )
 }
