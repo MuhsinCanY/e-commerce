@@ -9,6 +9,7 @@ export default {
         't-1': '#23A6F0', //blue
         't-2': '#737373', //gray
         't-3': '#252B42', //black
+        't-4': '#23856D', //green
       },
     },
   },
