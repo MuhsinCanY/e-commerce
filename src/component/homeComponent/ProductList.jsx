@@ -3,7 +3,7 @@ import ProductCard from './ProductCard'
 
 export default function ProductList() {
   return (
-    <div className="custom-container-out py-10 bg-white">
+    <div className="custom-container-out bg-white">
       <div className="custom-container-in">
         <div className="flex flex-col font-[Montserrat] font-bold">
           <ProductListHeader />

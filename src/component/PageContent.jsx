@@ -5,6 +5,8 @@ import ProductList from './homeComponent/ProductList'
 import Home from './homeComponent/Home'
 import Categorys from './category/Categorys'
 import Clients from './client/Clients'
+import FilterRow from './FilterRow'
+import Pagination from './Pagination'
 
 export default function PageContent() {
   return (
@@ -14,7 +16,9 @@ export default function PageContent() {
       </Route>
       <Route path="/shopping" exact>
         <Categorys />
+        <FilterRow />
         <ProductList />
+        <Pagination />
         <Clients />
       </Route>
     </Switch>
