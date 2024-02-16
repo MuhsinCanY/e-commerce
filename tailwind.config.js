@@ -4,7 +4,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        muted: '#BDBDBD',
+        m: '#BDBDBD', //muted
+        s: '#2DC071', //success
         'p-1': '#4731D3',
         'p-2': '#CBF281',
         't-1': '#23A6F0', //blue

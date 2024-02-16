@@ -8,11 +8,7 @@ export default function BreadcrumbsCustom({ title, paths }) {
       <h2 className="font-[Montserrat] font-bold text-[24px]">{title}</h2>
       <Breadcrumbs
         separator={
-          <FontAwesomeIcon
-            icon={faChevronRight}
-            size="xs"
-            className="text-muted"
-          />
+          <FontAwesomeIcon icon={faChevronRight} size="xs" className="text-m" />
         }
       >
         {paths.map((p, i) => {
@@ -24,7 +20,7 @@ export default function BreadcrumbsCustom({ title, paths }) {
             </Link>
           )
         })}
-        <Typography className="text-muted">Shop</Typography>
+        <Typography className="text-m">Shop</Typography>
       </Breadcrumbs>
     </div>
   )
