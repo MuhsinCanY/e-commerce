@@ -32,15 +32,9 @@ function ProductListHeader() {
       <div className="text-center text-[24px] tracking-wider text-t-3">
         BESTSELLER PRODUCTS
       </div>
-      <div className="text-center text-[14px]  font-normal tracking-wide text-t-2">
+      <div className="text-center text-[14px]  font-normal tracking-wider text-t-2">
         Problems trying to resolve the conflict between{' '}
       </div>
     </div>
   )
 }
-
-// <div className="custom-container-out py-10 bg-white">
-//   <div className="custom-container-in">
-
-//   </div>
-// </div>
