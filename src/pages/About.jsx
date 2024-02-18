@@ -1,9 +1,11 @@
 import React from 'react'
+import AboutHeader from '../component/AboutHeader'
 
 export default function About() {
   return (
-    <div className="container bg-red-400 ">
-      <div>AboutHeader</div>
+    // container bg-red-400
+    <div className="">
+      <AboutHeader />
       <div>AboutContent</div>
       <div>AboutStats</div>
       <div>AboutVideo</div>
