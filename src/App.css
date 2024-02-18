@@ -5,10 +5,12 @@
 @layer components {
   .custom-container-out {
     @apply flex justify-center;
+    /* @apply container; */
   }
 
   .custom-container-in {
-    @apply flex w-[1100px] min-w-[900px] px-10 py-4 mx-8;
+    /* @apply flex w-[1100px] min-w-[900px] px-10 py-4 mx-8; */
+    @apply flex max-w-[1200px] px-10 py-4 mx-8;
   }
 
   .selected {

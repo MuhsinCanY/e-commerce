@@ -10,7 +10,7 @@ const blogImg =
 
 export default function BlogCard() {
   return (
-    <div className="font-normal shadow-xl">
+    <div className="font-normal shadow-xl w-[360px]">
       <img src={blogImg} className="object-cover h-[300px] w-[360px]" />
       <div className="flex flex-col gap-3 py-4 px-8 tracking-wider">
         <div className="flex gap-2 text-[12px] ">

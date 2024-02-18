@@ -61,7 +61,7 @@ export default function Header() {
               <NavLink activeClassName="selected" to="/shopping">
                 Shop
               </NavLink>
-              <NavLink activeClassName="selected" to="/2">
+              <NavLink activeClassName="selected" to="/about">
                 About
               </NavLink>
               <NavLink activeClassName="selected" to="/3">

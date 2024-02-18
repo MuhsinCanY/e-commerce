@@ -13,8 +13,8 @@ function CustomCarouser() {
   const itemClass = 'h-[700px] w-[99vw] max-w-[1150px] object-cover'
 
   return (
-    <div className="custom-container-out  bg-[#00a5cb] bg-t-1">
-      <div className="custom-container-in justify-center min-w-full p-0 ">
+    <div className="custom-container-out  bg-[#00a5cb]">
+      <div className="custom-container-in justify-center p-0 ">
         <Carousel
           activeIndex={index}
           onSelect={handleSelect}

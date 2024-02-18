@@ -11,8 +11,8 @@ export default function Footer() {
   return (
     <>
       <div className="custom-container-out bg-[#FAFAFA] ">
-        <div className="custom-container-in flex-col pb-0 pt-6">
-          <div className="flex justify-between items-center my-6 mb-10">
+        <div className="custom-container-in flex-col pb-0 pt-6 w-full">
+          <div className="flex justify-between  container items-center my-6 mb-10">
             <Link
               to="/"
               className="font-[Montserrat] font-bold text-2xl text-t-3 tracking-wide min-w-[140px]"
@@ -29,8 +29,8 @@ export default function Footer() {
         </div>
       </div>
       <div className="custom-container-out bg-white ">
-        <div className="custom-container-in flex-col ">
-          <div className="flex justify-between my-8">
+        <div className="custom-container-in flex-col w-full">
+          <div className="flex justify-between gap-10 flex-wrap my-8">
             <div className="flex flex-col gap-2 tracking-wider">
               <h3 className="text-bold font-[Montserrat] font-bold text-lg text-t-3 mb-2">
                 Company
@@ -120,7 +120,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="custom-container-out bg-[#FAFAFA] ">
-        <div className="custom-container-in flex-col py-0">
+        <div className="custom-container-in flex-col py-0 w-full">
           <div className="flex justify-between items-center my-6 text-t-2 font-bold text-sm tracking-wide">
             <p>Made With Love By Finland All Right Reserved </p>
           </div>

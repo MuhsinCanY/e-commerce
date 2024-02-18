@@ -9,7 +9,7 @@ import React from 'react'
 export default function FilterRow() {
   return (
     <div className="custom-container-out pt-10 bg-white">
-      <div className="custom-container-in justify-between items-center font-[Montserrat] font-bold text-[14px] text-[#737373] px-[70px]">
+      <div className="custom-container-in w-full flex-wrap gap-10 justify-between items-center font-[Montserrat] font-bold text-[14px] text-[#737373] px-[70px]">
         <p>Showing all 12 results</p>
         <div className="flex gap-2 items-center">
           <p className="pr-2">Views:</p>
@@ -24,7 +24,7 @@ export default function FilterRow() {
           />
         </div>
         <div className="flex gap-2">
-          <button className="text-[#737373] font-normal  bg-[#F9F9F9] border-1 border-[#ECECEC] px-4 py-[10px] rounded">
+          <button className="text-[#737373] w-max font-normal  bg-[#F9F9F9] border-1 border-[#ECECEC] px-4 py-[10px] rounded">
             Popularity <FontAwesomeIcon icon={faChevronDown} />
             {/* https://mui.com/material-ui/react-menu/ */}
           </button>

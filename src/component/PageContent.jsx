@@ -7,6 +7,7 @@ import Categorys from './category/Categorys'
 import Clients from './client/Clients'
 import FilterRow from './FilterRow'
 import Pagination from './Pagination'
+import About from '../pages/About'
 
 export default function PageContent() {
   return (
@@ -20,6 +21,9 @@ export default function PageContent() {
         <ProductList />
         <Pagination />
         <Clients />
+      </Route>
+      <Route path="/about" exact>
+        <About />
       </Route>
     </Switch>
   )

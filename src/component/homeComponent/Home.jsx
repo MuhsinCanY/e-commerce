@@ -9,10 +9,11 @@ export default function Home() {
   return (
     <div>
       <CustomCarouser />
-      <EditorPick />
-      <Blog />
       <ProductList />
+      <CustomCarouser />
+      <EditorPick />
       <Fluid />
+      <Blog />
     </div>
   )
 }

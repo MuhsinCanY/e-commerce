@@ -16,17 +16,27 @@ export default function EditorPick() {
             </p>
           </div>
           <div className="grid grid-cols-4 grid-rows-2 gap-4 bg-gray px-8">
-            <div className="bg-t-1 col-span-2 row-span-2 ...">
+            <div className="bg-t-1 col-span-2 row-span-2 relative ...">
               <img src="/assets/editorPick/editor1.jpeg" />
+              <div class="absolute bottom-5 left-5 px-4 py-3 bg-white">MEN</div>
             </div>
-            <div className="bg-t-1 row-span-2 ...">
+            <div className="bg-t-1 row-span-2 relative">
               <img src="/assets/editorPick/editor2.jpeg" />
+              <div class="absolute bottom-5 left-5 px-4 py-3 bg-white">
+                WOMEN
+              </div>
             </div>
-            <div className="bg-t-1 ...">
+            <div className="bg-t-1 relative">
               <img src="/assets/editorPick/editor3.jpeg" />
+              <div class="absolute bottom-5 left-5 px-4 py-3 bg-white">
+                ACCESSORIES
+              </div>
             </div>
-            <div className="bg-t-1 ...">
+            <div className="bg-t-1 relative">
               <img src="/assets/editorPick/editor4.jpeg" />
+              <div class="absolute bottom-5 left-5 px-4 py-3 bg-white">
+                KIDS
+              </div>
             </div>
           </div>
         </div>

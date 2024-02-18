@@ -4,7 +4,7 @@ import ClientsCard from './ClientsCard'
 export default function Clients() {
   return (
     <div className="custom-container-out py-10 bg-white">
-      <div className="custom-container-in gap-6 justify-center">
+      <div className="custom-container-in gap-6 flex-wrap justify-center">
         <ClientsCard imageSource="/assets/clients/client0.png" />
         <ClientsCard imageSource="/assets/clients/client1.png" />
         <ClientsCard
