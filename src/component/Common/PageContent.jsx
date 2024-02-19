@@ -3,6 +3,7 @@ import Home from '../../pages/Home'
 import About from '../../pages/About'
 import Shop from '../../pages/Shop'
 import Contact from '../../pages/Contact'
+import Team from '../../pages/Team'
 
 export default function PageContent() {
   return (
@@ -18,6 +19,9 @@ export default function PageContent() {
       </Route>
       <Route path="/contact" exact>
         <Contact />
+      </Route>
+      <Route path="/team" exact>
+        <Team />
       </Route>
     </Switch>
   )

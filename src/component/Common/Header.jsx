@@ -70,8 +70,8 @@ export default function Header() {
               <NavLink activeClassName="selected" to="/contact">
                 Contact
               </NavLink>
-              <NavLink activeClassName="selected" to="/5">
-                Pages
+              <NavLink activeClassName="selected" to="/team">
+                Team
               </NavLink>
             </nav>
           </div>
