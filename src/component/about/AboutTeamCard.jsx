@@ -18,13 +18,19 @@ export default function AboutTeamCard({ username, job }) {
       <p className="text-center text-t-2 text-[14px] leading-[24px] tracking-wider">
         {job}
       </p>
-      <div className="flex gap-4 text-2xl text-t-1 justify-center">
-        <FontAwesomeIcon icon={faFacebook} className="cursor-pointer" />
+      <div className="flex gap-4 text-2xl text-t-1 justify-center items-center">
+        <FontAwesomeIcon
+          icon={faFacebook}
+          className="cursor-pointer size-[20px]"
+        />
         <FontAwesomeIcon
           icon={faInstagram}
-          className="text-t-3 cursor-pointer"
+          className="text-t-3 cursor-pointer size-[20px]"
         />
-        <FontAwesomeIcon icon={faTwitter} className="cursor-pointer" />
+        <FontAwesomeIcon
+          icon={faTwitter}
+          className="cursor-pointer size-[20px]"
+        />
       </div>
     </div>
   )
