@@ -67,7 +67,7 @@ export default function Header() {
               <NavLink activeClassName="selected" to="/3">
                 Blog
               </NavLink>
-              <NavLink activeClassName="selected" to="/4">
+              <NavLink activeClassName="selected" to="/contact">
                 Contact
               </NavLink>
               <NavLink activeClassName="selected" to="/5">
