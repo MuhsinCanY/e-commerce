@@ -4,6 +4,7 @@ import About from '../../pages/About'
 import Shop from '../../pages/Shop'
 import Contact from '../../pages/Contact'
 import Team from '../../pages/Team'
+import Product from '../../pages/Product'
 
 export default function PageContent() {
   return (
@@ -22,6 +23,9 @@ export default function PageContent() {
       </Route>
       <Route path="/team" exact>
         <Team />
+      </Route>
+      <Route path="/product" exact>
+        <Product />
       </Route>
     </Switch>
   )

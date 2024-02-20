@@ -1,10 +1,10 @@
 import React from 'react'
 import ClientsCard from './ClientsCard'
 
-export default function Clients() {
+export default function Clients({ bg = 'bg-white' }) {
   return (
-    <div className="custom-container-out py-10 bg-white">
-      <div className="custom-container-in gap-6 flex-wrap justify-center">
+    <div className={`${bg} py-10`}>
+      <div className="container flex gap-6 flex-wrap justify-center">
         <ClientsCard imageSource="/assets/clients/client0.png" />
         <ClientsCard imageSource="/assets/clients/client1.png" />
         <ClientsCard
