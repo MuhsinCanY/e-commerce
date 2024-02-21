@@ -22,8 +22,8 @@ export default function Header() {
   return (
     <>
       <div className="custom-container-out font-[Montserrat] font-bold text-[14px] bg-t-3">
-        <div className="custom-container-in w-[1300px] gap-10 min-w-max justify-between items-center text-white">
-          <div className="flex gap-4 items-center">
+        <div className="hidden lg:flex container flex flex-col lg:flex-row py-4 gap-8 min-w-max justify-between items-center text-white">
+          <div className="flex gap-3 items-center">
             <p>
               <FontAwesomeIcon icon={faPhone} /> (225) 555-0118
             </p>
@@ -45,8 +45,8 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <div className="custom-container-out font-[Montserrat] font-bold bg-white">
-        <div className="custom-container-in w-[1300px] gap-10 justify-between items-center">
+      <div className=" font-[Montserrat] font-bold bg-white">
+        <div className="container flex flex-col lg:flex-row py-4 gap-10 justify-between items-center">
           <div className="flex gap-4">
             <Link
               to="/"
@@ -54,27 +54,27 @@ export default function Header() {
             >
               Bandage
             </Link>
-            <nav className="flex gap-6 items-center text-t-2 ">
-              <NavLink activeClassName="selected" to="/" exact>
-                Home
-              </NavLink>
-              <NavLink activeClassName="selected" to="/shopping">
-                Shop
-              </NavLink>
-              <NavLink activeClassName="selected" to="/about">
-                About
-              </NavLink>
-              <NavLink activeClassName="selected" to="/product">
-                Product
-              </NavLink>
-              <NavLink activeClassName="selected" to="/contact">
-                Contact
-              </NavLink>
-              <NavLink activeClassName="selected" to="/team">
-                Team
-              </NavLink>
-            </nav>
           </div>
+          <nav className="flex gap-3 items-center text-t-2 ">
+            <NavLink activeClassName="selected" to="/" exact>
+              Home
+            </NavLink>
+            <NavLink activeClassName="selected" to="/shopping">
+              Shop
+            </NavLink>
+            <NavLink activeClassName="selected" to="/about">
+              About
+            </NavLink>
+            <NavLink activeClassName="selected" to="/product">
+              Product
+            </NavLink>
+            <NavLink activeClassName="selected" to="/contact">
+              Contact
+            </NavLink>
+            <NavLink activeClassName="selected" to="/team">
+              Team
+            </NavLink>
+          </nav>
           <div className="flex gap-6 items-center text-t-1">
             <p className="min-w-max">
               <FontAwesomeIcon icon={faUser} /> <Link to="/login">Login</Link> /{' '}

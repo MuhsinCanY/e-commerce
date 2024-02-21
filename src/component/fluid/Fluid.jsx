@@ -5,10 +5,10 @@ const src =
 
 export default function Fluid() {
   return (
-    <div className="custom-container-out bg-white">
-      <div className="custom-container-in p-0 gap-[120px] font-[Montserrat] font-bold">
+    <div className="bg-white py-12">
+      <div className="container flex flex-col md:flex-row gap-[60px] font-[Montserrat] font-bold">
         <div className="flex-1  ">
-          <img src={src} className="h-[600px]"></img>
+          <img src={src} className="h-[500px] md:h-[600px]"></img>
         </div>
         <div className="flex-1 flex flex-col gap-4 justify-center items-start">
           <p className="text-m text-sm tracking-wide">SUMMER 2020</p>
