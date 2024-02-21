@@ -77,7 +77,8 @@ export default function Header() {
           </div>
           <div className="flex gap-6 items-center text-t-1">
             <p className="min-w-max">
-              <FontAwesomeIcon icon={faUser} /> Login / Register
+              <FontAwesomeIcon icon={faUser} /> <Link to="/login">Login</Link> /{' '}
+              <Link to="/signup">Register</Link>
             </p>
             <p>
               <FontAwesomeIcon icon={faMagnifyingGlass} />
