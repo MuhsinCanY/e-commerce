@@ -5,7 +5,7 @@ import Shop from '../pages/Shop'
 import Contact from '../pages/Contact'
 import Team from '../pages/Team'
 import Product from '../pages/Product'
-import Singup from '../pages/Singup'
+import Singup from '../pages/Signup'
 
 export default function PageContent() {
   return (
