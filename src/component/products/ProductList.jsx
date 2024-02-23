@@ -3,11 +3,11 @@ import ProductCard from './ProductCard'
 
 export default function ProductList() {
   return (
-    <div className="custom-container-out bg-white">
-      <div className="custom-container-in">
+    <div className="bg-white py-16">
+      <div className="container flex">
         <div className="flex flex-col font-[Montserrat] font-bold">
           <ProductListHeader />
-          <div className="flex justify-center gap-4 flex-wrap">
+          <div className="flex justify-center gap-3 flex-wrap">
             <ProductCard />
             <ProductCard />
             <ProductCard />

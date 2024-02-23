@@ -10,7 +10,7 @@ export default function Pagination() {
               <li>
                 <a
                   href="#"
-                  className="h-[70px] flex items-center justify-center px-4 h-[70px] ms-0 leading-tight text-gray-500 bg-[#F3F3F3] border border-e-0 border-gray-300 rounded-s-lg"
+                  className="h-[70px] flex items-center justify-center px-[15px] h-[70px] ms-0 leading-tight text-gray-500 bg-[#F3F3F3] border border-e-0 border-gray-300 rounded-s-lg"
                 >
                   Previous
                 </a>
@@ -18,7 +18,7 @@ export default function Pagination() {
               <li>
                 <a
                   href="#"
-                  className="flex items-center justify-center px-4 h-[70px] leading-tight text-gray-500 bg-white border border-gray-300 "
+                  className="flex items-center justify-center px-[15px] h-[70px] leading-tight text-gray-500 bg-white border border-gray-300 "
                 >
                   1
                 </a>
@@ -26,7 +26,7 @@ export default function Pagination() {
               <li>
                 <a
                   href="#"
-                  className="flex items-center justify-center px-4 h-[70px] leading-tight text-gray-500 bg-white border border-gray-300 "
+                  className="flex items-center justify-center px-[15px] h-[70px] leading-tight text-gray-500 bg-white border border-gray-300 "
                 >
                   2
                 </a>
@@ -35,7 +35,7 @@ export default function Pagination() {
                 <a
                   href="#"
                   aria-current="page"
-                  className="flex items-center justify-center px-4 h-[70px] text-white border border-gray-300 bg-t-1"
+                  className="flex items-center justify-center px-[15px] h-[70px] text-white border border-gray-300 bg-t-1"
                 >
                   3
                 </a>
@@ -43,7 +43,7 @@ export default function Pagination() {
               <li>
                 <a
                   href="#"
-                  className="flex items-center justify-center px-4 h-[70px] leading-tight text-gray-500 bg-white border border-gray-300 "
+                  className="flex items-center justify-center px-[15px] h-[70px] leading-tight text-gray-500 bg-white border border-gray-300 "
                 >
                   4
                 </a>
@@ -51,7 +51,7 @@ export default function Pagination() {
               <li>
                 <a
                   href="#"
-                  className="flex items-center justify-center px-4 h-[70px] leading-tight text-gray-500 bg-white border border-gray-300 "
+                  className="flex items-center justify-center px-[15px] h-[70px] leading-tight text-gray-500 bg-white border border-gray-300 "
                 >
                   5
                 </a>
@@ -59,7 +59,7 @@ export default function Pagination() {
               <li>
                 <a
                   href="#"
-                  className="flex items-center justify-center px-4 h-[70px] leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg "
+                  className="flex items-center justify-center px-[15px] h-[70px] leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg "
                 >
                   Next
                 </a>

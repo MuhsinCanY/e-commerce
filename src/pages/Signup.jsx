@@ -108,6 +108,7 @@ export default function Singup() {
             onSubmit={handleSubmit(onSubmit)}
             className="form-solid mx-auto grid grid-cols-1 gap-6 max-w-[440px]"
           >
+            <h2 className="text-center text-[30px] font-bold">Sign Up</h2>
             <div>
               <label>Name</label>
               <input
@@ -130,7 +131,7 @@ export default function Singup() {
               <label>Email</label>
               <input
                 type="text"
-                value="mcyilmaz1998@gmail.com"
+                value="xmcyilmaz1998@gmail.com"
                 placeholder="Email"
                 className="mt-1 block w-full rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
                 {...register('email', {
