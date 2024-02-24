@@ -3,7 +3,7 @@ export default function ClientsCard({
   position = 'object-center',
 }) {
   return (
-    <div className="object-scale-down w-[140px] h-[100px]">
+    <div className="object-scale-down grow basis-[100px] md:basis-[170px] h-[100px]">
       <img src={imageSource} className={`${position} object-scale-down`} />
     </div>
   )

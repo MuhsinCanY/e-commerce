@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import useAxios, { REQ_TYPES } from '../helper/api'
-import { CircularProgress, TextField } from '@mui/material'
+import { CircularProgress } from '@mui/material'
+import { toast } from 'react-toastify'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 
 const formDataInitial = {
   name: '',
@@ -12,20 +14,14 @@ const formDataInitial = {
 }
 
 export default function Singup() {
+  let history = useHistory()
   const [isStoreSelect, setIsStoreSelect] = useState(false)
   const [isPasswordEqual, setIsPasswordEqual] = useState(false)
   const { data: roles, setData: setRoles, doRequest } = useAxios([])
-  const {
-    data: store,
-    setData: setStore,
-    doRequest: doRequestStore,
-  } = useAxios([])
-  const {
-    data: costumer,
-    setData: setCostumer,
-    loading: loadingCostumer,
-    doRequest: doRequestCustomer,
-  } = useAxios([])
+  const { loading: loadingStore, doRequest: doRequestStore } = useAxios([])
+  const { loading: loadingCostumer, doRequest: doRequestCustomer } = useAxios(
+    []
+  )
 
   useEffect(() => {
     doRequest({
@@ -43,21 +39,13 @@ export default function Singup() {
     defaultValues: formDataInitial,
   })
 
-  const handleChange = (event) => {
-    // let { name, value, type } = event.target
-    // value = type === 'checkbox' ? event.target.checked : value
-    // setForm({ ...form, [name]: value })
-    console.log(event)
-  }
-
   const onSubmit = (data) => {
-    console.log(data.password !== data.password2, data.password, data.password2)
     if (data.password !== data.password2) {
       setIsPasswordEqual(false)
     } else {
       setIsPasswordEqual(true)
       if (isStoreSelect) {
-        console.log('Store post')
+        // console.log('Store post')
         doRequestStore({
           endpoint: '/signup',
           reqType: REQ_TYPES.POST,
@@ -73,11 +61,19 @@ export default function Singup() {
               bank_account: data.storeBank_account,
             },
           },
-        }).then((res) => {
-          console.log(res.data)
         })
+          .then((res) => {
+            // console.log(res.data)
+            history.goBack()
+            toast('You need to click link in email to activate your account!')
+          })
+          .catch((err) => {
+            // console.log('errrrrr', err)
+            toast(
+              'You cannot register again with the registered email. Please check your information'
+            )
+          })
       } else {
-        console.log('Costumer post')
         doRequestCustomer({
           endpoint: '/signup',
           reqType: REQ_TYPES.POST,
@@ -89,16 +85,19 @@ export default function Singup() {
           },
         })
           .then((res) => {
-            console.log(res.data)
+            // console.log(res.data)
+            history.goBack()
+            toast('You need to click link in email to activate your account!')
           })
           .catch((err) => {
-            console.log(err)
+            // console.log('errrrrr', err)
+            toast(
+              'You cannot register again with the registered email. Please check your information'
+            )
           })
       }
     }
-    console.log(data)
   }
-  console.log('Errrororrrr', errors)
 
   return (
     <div className="bg-[#FAFAFA] py-10 font-[Montserrat] font-medium text-[16px] leading-[20px] tracking-wider">
@@ -120,7 +119,7 @@ export default function Singup() {
                   required: 'Name is required',
                   min: 3,
                   pattern: {
-                    value: /^[a-zA-Z0-9-]{3,}/gm,
+                    value: /^[a-zA-Z0-9-]{3,3}/gm,
                     message: 'Name field should be appear at least 3 char',
                   },
                 })}
@@ -131,7 +130,7 @@ export default function Singup() {
               <label>Email</label>
               <input
                 type="text"
-                value="xmcyilmaz1998@gmail.com"
+                value="mcyilmaz095@gmail.com"
                 placeholder="Email"
                 className="mt-1 block w-full rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
                 {...register('email', {
@@ -175,12 +174,11 @@ export default function Singup() {
             <div>
               <label>Role</label>
               <select
-                onChange={handleChange}
                 className="mt-1 block w-full rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
                 {...register('role_id', {
                   required: true,
                   onChange: (e) => {
-                    console.log(e.target.value)
+                    // console.log(e.target.value)
                     if (e.target.value == 2) {
                       setIsStoreSelect(true)
                     } else {
@@ -206,6 +204,7 @@ export default function Singup() {
                   <label>Store Name</label>
                   <input
                     type="text"
+                    value="Sabanci"
                     placeholder="Store Name"
                     className="mt-1 block w-full rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
                     {...register('storeName', {
@@ -223,11 +222,11 @@ export default function Singup() {
                   <label>Store Phone</label>
                   <input
                     type="text"
+                    value="+905557171722"
                     placeholder="Store Phone"
                     className="mt-1 block w-full rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
                     {...register('storePhone', {
                       required: 'Phone is required',
-                      min: 3,
                       pattern: {
                         value:
                           /^(((\+|00)?(90)|0)[-| ]?)?((5\d{2})[-| ]?(\d{3})[-| ]?(\d{2})[-| ]?(\d{2}))$/gm,
@@ -242,13 +241,14 @@ export default function Singup() {
                   <input
                     type="text"
                     name="name"
+                    value="T1234V993456"
                     placeholder="Store Tax ID"
                     className="mt-1 block w-full rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
                     {...register('storeTax_no', {
                       required: 'Tax ID is required',
                       min: 3,
                       pattern: {
-                        value: /^[a-zA-Z0-9-]{3,}/gm,
+                        value: /^[a-zA-Z0-9-]{12,}/gm,
                         message: 'Tax ID must be TXXXXVXXXXXX format',
                       },
                     })}
@@ -259,13 +259,14 @@ export default function Singup() {
                   <label>Store Bank Account</label>
                   <input
                     type="text"
+                    value="TR330006100519786457841234"
                     placeholder="Store Bank Account"
                     className="mt-1 block w-full rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
                     {...register('storeBank_account', {
                       required: 'Bank Account is required',
                       pattern: {
-                        value: /^[a-zA-Z0-9-]{3,}/gm,
-                        message: 'Name field should be appear at least 3 char',
+                        value: /^[a-zA-Z0-9- ]{26,}/gm,
+                        message: 'Bank Account is not valid',
                       },
                     })}
                   />
@@ -278,12 +279,12 @@ export default function Singup() {
 
             <button
               type="submit"
-              className="mt-1 mx-auto px-5 py-3 block max-w-fit rounded-md bg-t-3 text-white border-transparent focus:border-gray-500  focus:ring-0"
+              className="mt-1 mx-auto block max-w-fit rounded-md bg-t-3 text-white border-transparent focus:border-gray-500 focus:ring-0 min-w-[152px] h-[50px]"
             >
-              {loadingCostumer && (
-                <CircularProgress size={20} className="mx-1" color="inherit" />
+              {(loadingCostumer || loadingStore) && (
+                <CircularProgress size={20} className="" color="inherit" />
               )}
-              Sing In
+              {!(loadingCostumer || loadingStore) && 'Sing In'}
             </button>
           </form>
         </div>
