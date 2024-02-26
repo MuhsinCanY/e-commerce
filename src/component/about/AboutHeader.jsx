@@ -45,7 +45,7 @@ export default function AboutHeader() {
             src="/assets/about/header/EllipseSmall.svg"
           />
           <img
-            className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[400px]"
+            className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[500px]"
             src={imgsrc}
           />
         </div>
