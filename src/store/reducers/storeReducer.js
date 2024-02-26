@@ -1,19 +1,19 @@
+export const StoreActions = {
+  setRoles: 'SET_ROLES',
+  // removeProduct: 'REMOVE_PRODUCT',
+  // addProduct: 'ADD_PRODUCT',
+  // setLoading: 'PRODUCTS_LOADING',
+}
+
 const initialState = {
   seller: {},
+  roles: [],
 }
 
 const storeReducer = (state = initialState, action) => {
   switch (action.type) {
-    //   case DELETE_MOVIE:
-    //     return {
-    //       ...state,
-    //       movies: state.movies.filter((item) => action.payload !== item.id),
-    //     }
-    //   case ADD_MOVIE:
-    //     return {
-    //       ...state,
-    //       movies: [...state.movies, action.payload],
-    //     }
+    case StoreActions.setRoles:
+      return { ...state, roles: action.payload }
     default:
       return state
   }

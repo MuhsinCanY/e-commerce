@@ -4,6 +4,8 @@ import useAxios, { REQ_TYPES } from '../helper/api'
 import { CircularProgress } from '@mui/material'
 import { toast } from 'react-toastify'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchRolesAction } from '../store/actions/storeActions'
 
 const formDataInitial = {
   name: '',
@@ -14,23 +16,22 @@ const formDataInitial = {
 }
 
 export default function Singup() {
+  const roles = useSelector((store) => store.storeReducer.roles)
+  const dispatch = useDispatch()
+
   let history = useHistory()
   const [isStoreSelect, setIsStoreSelect] = useState(false)
   const [isPasswordEqual, setIsPasswordEqual] = useState(false)
-  const { data: roles, setData: setRoles, doRequest } = useAxios([])
   const { loading: loadingStore, doRequest: doRequestStore } = useAxios([])
   const { loading: loadingCostumer, doRequest: doRequestCustomer } = useAxios(
     []
   )
 
   useEffect(() => {
-    doRequest({
-      endpoint: `/roles`,
-    }).then((res) => {
-      setRoles(res.data.reverse())
-    })
+    dispatch(fetchRolesAction())
   }, [])
 
+  // console.log('rolesss2', roles2)
   const {
     register,
     handleSubmit,

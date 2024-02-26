@@ -9,6 +9,22 @@ const instance = axios.create({
   // headers: {'authentication': 'foobar'}
 })
 
+//erhan
+export const createApiInstance = () => {
+  // const token = localStorage.getItem('token')
+
+  return axios.create({
+    baseURL: 'https://workintech-fe-ecommerce.onrender.com',
+    // headers: {
+    //   Authorization: token,
+    //   'X-LANG': 'TR',
+    // },
+  })
+}
+
+export let API = createApiInstance()
+//
+
 export const REQ_TYPES = Object.freeze({
   GET: 'get',
   POST: 'post',
