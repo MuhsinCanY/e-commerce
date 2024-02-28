@@ -17,8 +17,12 @@ import {
   faTwitter,
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons'
+import { useSelector } from 'react-redux'
+import Gravatar from 'react-gravatar'
 
 export default function Header() {
+  const { response } = useSelector((store) => store.userReducer)
+
   return (
     <>
       <div className="custom-container-out font-[Montserrat] font-bold text-[14px] bg-t-3">
@@ -77,8 +81,18 @@ export default function Header() {
           </nav>
           <div className="flex gap-6 items-center text-t-1">
             <p className="min-w-max">
-              <FontAwesomeIcon icon={faUser} /> <Link to="/login">Login</Link> /{' '}
-              <Link to="/signup">Register</Link>
+              {response.token ? (
+                <div className="flex gap-2 items-center">
+                  <Gravatar email={response.email} className="size-6" />
+                  <p>{response.name}</p>
+                </div>
+              ) : (
+                <div>
+                  <FontAwesomeIcon icon={faUser} />{' '}
+                  <Link to="/login">Login</Link> /{' '}
+                  <Link to="/signup">Register</Link>
+                </div>
+              )}
             </p>
             <p>
               <FontAwesomeIcon icon={faMagnifyingGlass} />

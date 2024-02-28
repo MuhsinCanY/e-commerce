@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import useAxios, { REQ_TYPES } from '../helper/api'
+import useAxios, { API, REQ_TYPES } from '../helper/api'
 import { CircularProgress } from '@mui/material'
 import { toast } from 'react-toastify'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchRolesAction } from '../store/actions/storeActions'
 
-const formDataInitial = {
-  name: '',
-  email: '',
-  password: '',
-  password2: '',
-  role_id: 3,
-}
+// const formDataInitial = {
+//   name: '',
+//   email: '',
+//   password: '',
+//   password2: '',
+//   role_id: 3,
+// }
 
 export default function Singup() {
   const roles = useSelector((store) => store.storeReducer.roles)
@@ -22,22 +22,19 @@ export default function Singup() {
   let history = useHistory()
   const [isStoreSelect, setIsStoreSelect] = useState(false)
   const [isPasswordEqual, setIsPasswordEqual] = useState(false)
-  const { loading: loadingStore, doRequest: doRequestStore } = useAxios([])
-  const { loading: loadingCostumer, doRequest: doRequestCustomer } = useAxios(
-    []
-  )
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     dispatch(fetchRolesAction())
   }, [])
 
-  // console.log('rolesss2', roles2)
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    defaultValues: formDataInitial,
+    // defaultValues: formDataInitial,
+    defaultValues: {},
   })
 
   const onSubmit = (data) => {
@@ -46,55 +43,56 @@ export default function Singup() {
     } else {
       setIsPasswordEqual(true)
       if (isStoreSelect) {
-        // console.log('Store post')
-        doRequestStore({
-          endpoint: '/signup',
-          reqType: REQ_TYPES.POST,
-          payload: {
-            name: data.name,
-            email: data.email,
-            password: data.password,
-            role_id: data.role_id,
-            store: {
-              name: data.storeName,
-              phone: data.storePhone,
-              tax_no: data.storeTax_no,
-              bank_account: data.storeBank_account,
-            },
+        const payload = {
+          name: data.name,
+          email: data.email,
+          password: data.password,
+          role_id: data.role_id,
+          store: {
+            name: data.storeName,
+            phone: data.storePhone,
+            tax_no: data.storeTax_no,
+            bank_account: data.storeBank_account,
           },
-        })
+        }
+
+        setIsLoading(true)
+
+        API.post('/signup', payload)
           .then((res) => {
-            // console.log(res.data)
+            console.log(res.data)
             history.goBack()
             toast('You need to click link in email to activate your account!')
           })
           .catch((err) => {
-            // console.log('errrrrr', err)
+            console.log('errrrrr', err)
             toast(
               'You cannot register again with the registered email. Please check your information'
             )
+          })
+          .finally(() => {
+            setIsLoading(false)
           })
       } else {
-        doRequestCustomer({
-          endpoint: '/signup',
-          reqType: REQ_TYPES.POST,
-          payload: {
-            name: data.name,
-            email: data.email,
-            password: data.password,
-            role_id: data.role_id,
-          },
-        })
+        const payload = {
+          name: data.name,
+          email: data.email,
+          password: data.password,
+          role_id: data.role_id,
+        }
+        setIsLoading(true)
+        API.post('/signup', payload)
           .then((res) => {
-            // console.log(res.data)
             history.goBack()
             toast('You need to click link in email to activate your account!')
           })
           .catch((err) => {
-            // console.log('errrrrr', err)
             toast(
               'You cannot register again with the registered email. Please check your information'
             )
+          })
+          .finally(() => {
+            setIsLoading(false)
           })
       }
     }
@@ -131,7 +129,7 @@ export default function Singup() {
               <label>Email</label>
               <input
                 type="text"
-                value="mcyilmaz095@gmail.com"
+                value="mcyilmaz097@gmail.com"
                 placeholder="Email"
                 className="mt-1 block w-full rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
                 {...register('email', {
@@ -282,10 +280,12 @@ export default function Singup() {
               type="submit"
               className="mt-1 mx-auto block max-w-fit rounded-md bg-t-3 text-white border-transparent focus:border-gray-500 focus:ring-0 min-w-[152px] h-[50px]"
             >
-              {(loadingCostumer || loadingStore) && (
+              {/* {(loadingCostumer || loadingStore) && ( */}
+              {isLoading && (
                 <CircularProgress size={20} className="" color="inherit" />
               )}
-              {!(loadingCostumer || loadingStore) && 'Sing In'}
+              {/* {!(loadingCostumer || loadingStore) && 'Sing In'} */}
+              {!isLoading && 'Sing In'}
             </button>
           </form>
         </div>
