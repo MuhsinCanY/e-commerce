@@ -17,11 +17,17 @@ import {
   faTwitter,
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Gravatar from 'react-gravatar'
+import { exitUser } from '../store/actions/userActions'
 
 export default function Header() {
   const { response } = useSelector((store) => store.userReducer)
+  const dispatch = useDispatch()
+
+  const handleExit = () => {
+    dispatch(exitUser())
+  }
 
   return (
     <>
@@ -85,6 +91,7 @@ export default function Header() {
                 <div className="flex gap-2 items-center">
                   <Gravatar email={response.email} className="size-6" />
                   <p>{response.name}</p>
+                  <button onClick={handleExit}>Exit</button>
                 </div>
               ) : (
                 <div>
