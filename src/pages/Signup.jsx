@@ -7,13 +7,13 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchRolesAction } from '../store/actions/storeActions'
 
-// const formDataInitial = {
-//   name: '',
-//   email: '',
-//   password: '',
-//   password2: '',
-//   role_id: 3,
-// }
+const formDataInitial = {
+  name: '',
+  email: '',
+  password: '',
+  password2: '',
+  role_id: 3,
+}
 
 export default function Singup() {
   const roles = useSelector((store) => store.storeReducer.roles)
@@ -129,14 +129,18 @@ export default function Singup() {
               <label>Email</label>
               <input
                 type="text"
-                value="mcyilmaz097@gmail.com"
+                // value="mcyilmaz097@gmail.com"
                 placeholder="Email"
                 className="mt-1 block w-full rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
                 {...register('email', {
                   required: true,
-                  pattern: /^\S+@\S+$/i,
+                  pattern: {
+                    value: /^\S+@\S+$/i,
+                    message: 'Email is not valid',
+                  },
                 })}
               />
+              <p className="text-red-500">{errors.email?.message}</p>
             </div>
             <div>
               <label>Password</label>
@@ -280,12 +284,10 @@ export default function Singup() {
               type="submit"
               className="mt-1 mx-auto block max-w-fit rounded-md bg-t-3 text-white border-transparent focus:border-gray-500 focus:ring-0 min-w-[152px] h-[50px]"
             >
-              {/* {(loadingCostumer || loadingStore) && ( */}
               {isLoading && (
                 <CircularProgress size={20} className="" color="inherit" />
               )}
-              {/* {!(loadingCostumer || loadingStore) && 'Sing In'} */}
-              {!isLoading && 'Sing In'}
+              {!isLoading && 'Sing Up'}
             </button>
           </form>
         </div>
