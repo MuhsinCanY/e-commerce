@@ -2,6 +2,7 @@ export const UserActions = {
   getUserData: 'GET_USER_DATA',
   getUserError: 'GET_USER_ERROR',
   setLoadingUser: 'SET_LOADING_USER',
+  exitUser: 'EXIT_USER',
 }
 
 const initialState = {
@@ -18,6 +19,8 @@ const userReducer = (state = initialState, action) => {
       return { ...state, error: action.payload, response: {} }
     case UserActions.setLoadingUser:
       return { ...state, loading: action.payload }
+    case UserActions.exitUser:
+      return { ...state, response: {}, error: {}, loading: false }
     default:
       return state
   }

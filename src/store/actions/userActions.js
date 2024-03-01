@@ -17,6 +17,15 @@ export const setLoadingUserCreator = (info) => ({
   payload: info,
 })
 
+export const exitUserCreator = () => ({
+  type: UserActions.exitUser,
+})
+
+export const exitUser = () => (dispatch) => {
+  localStorage.removeItem('token')
+  dispatch(exitUserCreator())
+}
+
 export const doPostRequestAction =
   (payload, history) => (dispatch, getState) => {
     dispatch(setLoadingUserCreator(true))
@@ -34,3 +43,20 @@ export const doPostRequestAction =
         dispatch(setLoadingUserCreator(false))
       })
   }
+
+export const doAutoLoginAction = (token) => (dispatch) => {
+  API.get('/verify', {
+    headers: {
+      Authorization: token,
+    },
+  })
+    .then((res) => {
+      console.log('Auto Login oldu: ', res.data)
+      localStorage.setItem('token', res.data.token)
+      dispatch(getUserDataCreator(res.data))
+    })
+    .catch((err) => {
+      console.error('Login Hata: ', err)
+      localStorage.removeItem('token')
+    })
+}
