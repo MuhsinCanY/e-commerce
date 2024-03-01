@@ -1,3 +1,7 @@
+export const GlobalActions = {
+  getCategories: 'GET_CATEGORIES',
+}
+
 const initialState = {
   roles: [],
   categories: [],
@@ -7,16 +11,8 @@ const initialState = {
 
 const globalReducer = (state = initialState, action) => {
   switch (action.type) {
-    //   case DELETE_MOVIE:
-    //     return {
-    //       ...state,
-    //       movies: state.movies.filter((item) => action.payload !== item.id),
-    //     }
-    //   case ADD_MOVIE:
-    //     return {
-    //       ...state,
-    //       movies: [...state.movies, action.payload],
-    //     }
+    case GlobalActions.getCategories:
+      return { ...state, categories: action.payload }
     default:
       return state
   }
