@@ -17,6 +17,9 @@ export default function PageContent() {
       <Route path="/shopping" exact>
         <Shop />
       </Route>
+      <Route path="/shopping/:gender/:category" exact>
+        <Shop />
+      </Route>
       <Route path="/about" exact>
         <About />
       </Route>

@@ -20,6 +20,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import Gravatar from 'react-gravatar'
 import { exitUser } from '../store/actions/userActions'
+import ShopDropdown from '../component/ShopDropdown'
 
 export default function Header() {
   const { response } = useSelector((store) => store.userReducer)
@@ -69,9 +70,7 @@ export default function Header() {
             <NavLink activeClassName="selected" to="/" exact>
               Home
             </NavLink>
-            <NavLink activeClassName="selected" to="/shopping">
-              Shop
-            </NavLink>
+            <ShopDropdown />
             <NavLink activeClassName="selected" to="/about">
               About
             </NavLink>

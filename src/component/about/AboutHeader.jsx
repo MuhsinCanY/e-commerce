@@ -1,8 +1,5 @@
 import React from 'react'
 
-const imgsrc =
-  'https://s3-alpha-sig.figma.com/img/7466/f015/45eb1f33b39fa1e1f6b0ddf5bb703345?Expires=1708905600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=N3JQTc4Vru1SLgFfXyO9QSw4VwuAHv-rnzVALn-dX4ZBYet5yquFiJlNkZSgH33XvuLw4Qq806CjrGrBQl-E7HD-RCPhpN32xRUeoimqyaqp4CS4SvipAKDSd8LxUZ1Q0xTbx0~gJXtyMh7cwOpy8QC4~e0O4TPdz6W-JZxldmBHSxY-vg1xpPyrbawDGynbwNx3TlSP8qCXaMPz~LQ1JH7mj2G3jj2qCd6L1t7dByL~~8pYeGPLLLY5tRgDMm2X-2hbwgGNqAb4Hi3Z6URsA8hjfr5ORAfrfh1AYRCHmH72Ypl94fvxLy57G8niEQ8XLyIkYlYGgAWtIEg2nLRHAg__'
-
 export default function AboutHeader() {
   return (
     <div className=" bg-white font-[Montserrat] font-bold text-t-3 py-6">
@@ -46,7 +43,7 @@ export default function AboutHeader() {
           />
           <img
             className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[500px]"
-            src={imgsrc}
+            src="/assets/about/header/aboutHeader.png"
           />
         </div>
       </div>

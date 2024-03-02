@@ -8,6 +8,6 @@ export const setRolesActionCreator = (roles) => ({
 
 export const fetchRolesAction = () => (dispatch, getState) => {
   API.get('/roles').then((res) => {
-    dispatch(setRolesActionCreator(res.data))
+    dispatch(setRolesActionCreator(res.data.reverse()))
   })
 }
