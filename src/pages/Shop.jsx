@@ -14,8 +14,8 @@ export default function Shop() {
   return (
     <div>
       <Categorys />
-      <FilterRow />
-      <ProductList />
+      <FilterRow category={category} />
+      <ProductList category={category} />
       <Pagination />
       <Clients />
     </div>

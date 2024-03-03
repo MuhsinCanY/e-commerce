@@ -60,7 +60,8 @@ export default function ShopDropdown() {
                 return (
                   <li key={index}>
                     <Link
-                      to={`/shopping/${path[0]}/${path[1]}`}
+                      // to={`/shopping/${path[0]}/${path[1]}`}
+                      to={`/shopping/${path[0]}/${category.id}`}
                       className="text-gray-500 dark:text-gray-400 cursor-pointer"
                     >
                       {category.title}
@@ -82,7 +83,7 @@ export default function ShopDropdown() {
                 return (
                   <li key={index}>
                     <Link
-                      to={`/shopping/${path[0]}/${path[1]}`}
+                      to={`/shopping/${path[0]}/${category.id}`}
                       className="text-gray-500 dark:text-gray-400 cursor-pointer"
                     >
                       {category.title}
