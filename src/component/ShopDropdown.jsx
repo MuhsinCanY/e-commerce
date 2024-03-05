@@ -1,24 +1,35 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCategoriesAction } from '../store/actions/globalActions'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 
-export default function ShopDropdown() {
+const ShopDropdown = () => {
   const [toggle, setToggle] = useState(false)
   const categories = useSelector((store) => store.globalReducer.categories)
   const dispatch = useDispatch()
+  const dropdownRef = useRef()
 
   const toggleMenu = () => {
     setToggle(!toggle)
   }
 
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setToggle(false)
+    }
+  }
+
   useEffect(() => {
     dispatch(getCategoriesAction())
-  }, [])
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [dispatch])
 
   return (
-    <div className="text-t-2 font-[Montserrat]">
+    <div ref={dropdownRef} className="text-t-2 font-[Montserrat]">
       <button
         onClick={toggleMenu}
         id="mega-menu-dropdown-button"
@@ -97,3 +108,5 @@ export default function ShopDropdown() {
     </div>
   )
 }
+
+export default ShopDropdown
