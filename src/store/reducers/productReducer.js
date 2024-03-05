@@ -1,3 +1,7 @@
+export const ProductActions = {
+  getProduct: 'GET_PRODUCT',
+}
+
 const initialState = {
   productList: [],
   totalProductCount: 0,
@@ -8,16 +12,8 @@ const initialState = {
 
 const productReducer = (state = initialState, action) => {
   switch (action.type) {
-    //   case DELETE_MOVIE:
-    //     return {
-    //       ...state,
-    //       movies: state.movies.filter((item) => action.payload !== item.id),
-    //     }
-    //   case ADD_MOVIE:
-    //     return {
-    //       ...state,
-    //       movies: [...state.movies, action.payload],
-    //     }
+    case ProductActions.getProduct:
+      return { ...state, productList: action.payload }
     default:
       return state
   }

@@ -1,12 +1,15 @@
-export default function ProductCard() {
+export default function ProductCard({ product }) {
+  const { images, name, price } = product
+
   return (
     <div className="flex grow basis-[250px] flex-col gap-3 mb-4 text-center font-[Montserrat] font-bold">
-      <img src="/assets/product/product1.jpeg" className="object-cover" />
-      <h4 className="text-[16px] pt-3">Grahic Design</h4>
-      <p className="text-[14px] text-t-2">English Department</p>
+      <img src={images[0].url} className="object-cover" />
+      <h4 className="text-[16px] pt-3">{name}</h4>
       <p>
-        <span className="text-[#BDBDBD] mr-2">$16.48</span>
-        <span className="text-t-4">$6.48</span>
+        <span className="text-[#BDBDBD] mr-2 line-through">
+          ${(price + 10).toFixed(2)}
+        </span>
+        <span className="text-t-4">${price.toFixed(2)}</span>
       </p>
       <div className="flex justify-center gap-2">
         <div className="size-4 bg-t-1 rounded-full"></div>

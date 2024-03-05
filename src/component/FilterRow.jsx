@@ -1,16 +1,36 @@
 import {
-  faChevronDown,
   faListUl,
+  faMagnifyingGlass,
   faTable,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
+import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getFiltredProductsAction } from '../store/actions/productActions'
 
-export default function FilterRow() {
+const sortData = [
+  { name: 'Sıralama', query: '' },
+  { name: 'Fiyata Göre Artan', query: 'price:asc' },
+  { name: 'Fiyata Göre Azalan', query: 'price:desc' },
+  { name: 'Puana Göre Artan', query: 'rating:asc' },
+  { name: 'Puana Göre Azalan', query: 'rating:desc' },
+]
+
+export default function FilterRow({ category }) {
+  const dispatch = useDispatch()
+  const { productList } = useSelector((store) => store.productReducer)
+
+  const [filter, setFilter] = useState('')
+  const [sort, setSort] = useState('')
+
+  const handleSearch = () => {
+    dispatch(getFiltredProductsAction(category, filter, sort))
+  }
+
   return (
-    <div className="custom-container-out pt-10 bg-white">
-      <div className="custom-container-in w-full flex-wrap gap-10 justify-between items-center font-[Montserrat] font-bold text-[14px] text-[#737373] px-[70px]">
-        <p>Showing all 12 results</p>
+    <div className=" pt-10 bg-white">
+      <div className="container flex w-full flex-wrap gap-10 justify-between items-center font-[Montserrat] font-bold text-[14px] text-[#737373] ">
+        <p>Showing all {productList.total} results</p>
         <div className="flex gap-2 items-center">
           <p className="pr-2">Views:</p>
           <FontAwesomeIcon
@@ -23,14 +43,59 @@ export default function FilterRow() {
             className="text-t-3 size-4 p-[10px] border-1 border-[#ECECEC] rounded cursor-pointer"
           />
         </div>
+        <div>
+          <form className="form-solid mx-auto flex items-center justify-center gap-2 max-w-[440px]">
+            <div>
+              <input
+                type="text"
+                value={filter}
+                placeholder="Search..."
+                onChange={(e) => {
+                  setFilter(e.target.value)
+                }}
+                className="block w-full rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
+              />
+            </div>
+
+            {filter.length > 0 && (
+              <button
+                onClick={() => {
+                  dispatch(getFiltredProductsAction(category, ''))
+                  setFilter('')
+                }}
+                type="button"
+                className="text-t-3 rounded-md border-transparent "
+              >
+                X
+              </button>
+            )}
+            <button
+              onClick={handleSearch}
+              type="button"
+              className="px-2 h-[41.8px] rounded-md bg-t-3 text-white border-transparent focus:border-gray-500"
+            >
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </button>
+          </form>
+        </div>
         <div className="flex gap-2">
-          <button className="text-[#737373] w-max font-normal  bg-[#F9F9F9] border-1 border-[#ECECEC] px-4 py-[10px] rounded">
-            Popularity <FontAwesomeIcon icon={faChevronDown} />
-            {/* https://mui.com/material-ui/react-menu/ */}
-          </button>
-          <button className="bg-[#23A6F0] text-white  px-4 py-[10px] rounded">
-            Filter
-          </button>
+          <select
+            onChange={(e) => {
+              setSort(e.target.value)
+              dispatch(
+                getFiltredProductsAction(category, filter, e.target.value)
+              )
+            }}
+            className="block w-full rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
+          >
+            {sortData.map((item, i) => {
+              return (
+                <option key={i} value={item.query}>
+                  {item.name}
+                </option>
+              )
+            })}
+          </select>
         </div>
       </div>
     </div>
