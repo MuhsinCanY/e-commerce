@@ -1,18 +1,16 @@
 import { useEffect } from 'react'
 import ProductCard from './ProductCard'
 import { useDispatch, useSelector } from 'react-redux'
-import { getProductsAction } from '../../store/actions/productActions'
+import { getFiltredProductsAction } from '../../store/actions/productActions'
 import { Spinner } from 'react-bootstrap'
 
-export default function ProductList({ category }) {
+export default function ProductList({ category, filter, sort, page }) {
   const { productList } = useSelector((store) => store.productReducer)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getProductsAction((category = category)))
-    console.log(productList)
-    console.log('productList', category)
-  }, [category])
+    dispatch(getFiltredProductsAction(category, filter, sort, (page - 1) * 12))
+  }, [category, page])
 
   return (
     <div className="bg-white py-16">
