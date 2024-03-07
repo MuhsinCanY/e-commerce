@@ -29,7 +29,7 @@ export default function PageContent() {
       <Route path="/team" exact>
         <Team />
       </Route>
-      <Route path="/product" exact>
+      <Route path="/:category/:productId/:slug" exact>
         <Product />
       </Route>
       <Route path="/signup" exact>

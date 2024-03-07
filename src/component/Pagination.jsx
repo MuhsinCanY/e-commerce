@@ -24,6 +24,7 @@ export default function Pagination({ category, gender, filter, sort, page }) {
         event.selected * itemsPerPage
       )
     )
+    window.scrollTo(0, 500)
   }
   return (
     <div className="flex justify-center bg-white">

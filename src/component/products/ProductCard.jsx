@@ -1,8 +1,21 @@
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+
 export default function ProductCard({ product }) {
   const { images, name, price } = product
+  const history = useHistory()
+
+  const handleClick = () => {
+    history.push({
+      pathname: `/${product.category_id}/${product.id}/${product.name}`,
+      state: product,
+    })
+  }
 
   return (
-    <div className="flex grow basis-[250px] flex-col gap-3 mb-4 text-center font-[Montserrat] font-bold">
+    <div
+      onClick={handleClick}
+      className="cursor-pointer flex grow basis-[250px] flex-col gap-3 mb-4 text-center font-[Montserrat] font-bold"
+    >
       <img src={images[0].url} className="object-cover" />
       <h4 className="text-[16px] pt-3">{name}</h4>
       <p>

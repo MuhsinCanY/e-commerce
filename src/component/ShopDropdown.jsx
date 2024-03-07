@@ -57,7 +57,7 @@ const ShopDropdown = () => {
         id="mega-menu-dropdown"
         className={`${
           toggle ? 'grid' : 'hidden'
-        } absolute z-10 pb-3  w-auto grid-cols-2 text-sm bg-white border border-gray-100 rounded-lg shadow-md dark:border-gray-700 md:grid-cols-2 dark:bg-gray-700`}
+        } absolute z-50 pb-3  w-auto grid-cols-2 text-sm bg-white border border-gray-100 rounded-lg shadow-md dark:border-gray-700 md:grid-cols-2 dark:bg-gray-700`}
       >
         <div className="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
           <ul className="space-y-4" aria-labelledby="mega-menu-dropdown-button">
