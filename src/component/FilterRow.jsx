@@ -4,7 +4,6 @@ import {
   faTable,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getFiltredProductsAction } from '../store/actions/productActions'
 
@@ -16,12 +15,15 @@ const sortData = [
   { name: 'Puana Göre Azalan', query: 'rating:desc' },
 ]
 
-export default function FilterRow({ category }) {
+export default function FilterRow({
+  category,
+  filter,
+  sort,
+  setFilter,
+  setSort,
+}) {
   const dispatch = useDispatch()
   const { productList } = useSelector((store) => store.productReducer)
-
-  const [filter, setFilter] = useState('')
-  const [sort, setSort] = useState('')
 
   const handleSearch = () => {
     dispatch(getFiltredProductsAction(category, filter, sort))
