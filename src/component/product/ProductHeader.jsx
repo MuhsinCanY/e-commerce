@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import BreadcrumbsCustom from '../BreadcrumbsCustom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -9,10 +9,19 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { Carousel, CarouselItem } from 'react-bootstrap'
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min'
+import { useDispatch } from 'react-redux'
+import { addToCartAction } from '../../store/actions/shoppingActions'
 
 export default function ProductHeader() {
+  const dispatch = useDispatch()
+  const [count, setCount] = useState(1)
   const location = useLocation()
   const product = location.state
+
+  const handleAddToCart = () => {
+    let item = { count: count, checked: true, product: product }
+    dispatch(addToCartAction(item))
+  }
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -50,7 +59,6 @@ export default function ProductHeader() {
           </div>
           <div className="flex gap-4">
             {product.images.map((img, i) => {
-              console.log(img)
               return (
                 <img
                   key={i}
@@ -98,9 +106,33 @@ export default function ProductHeader() {
             <div className="size-7 bg-[#E77C40] rounded-full"></div>
             <div className="size-7 bg-t-3 rounded-full"></div>
           </div>
-          <div className="flex gap-3 items-center py-5">
-            <button className="text-white bg-t-1 px-[20px] py-[10px] text-[14px] leading-[24px] tracking-wider rounded ">
-              Select Options
+          <div className="pt-3 flex items-center">
+            <button
+              onClick={() => {
+                if (count > 1) {
+                  setCount((c) => c - 1)
+                }
+              }}
+              className="px-3 py-1 bg-slate-400 rounded"
+            >
+              -
+            </button>
+            <p className="px-3">{count}</p>
+            <button
+              onClick={() => {
+                setCount((c) => c + 1)
+              }}
+              className="px-3 py-1 bg-slate-400 rounded"
+            >
+              +
+            </button>
+          </div>
+          <div className="flex gap-3 items-center ">
+            <button
+              onClick={handleAddToCart}
+              className="text-white bg-t-1 px-[20px] py-[10px] text-[14px] leading-[24px] tracking-wider rounded "
+            >
+              Add to Cart
             </button>
             <FontAwesomeIcon
               icon={faHeart}
