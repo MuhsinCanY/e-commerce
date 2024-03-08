@@ -7,8 +7,8 @@ export default function CartDropdown() {
   const dispatch = useDispatch()
   const { cart } = useSelector((state) => state.shoppingReducer)
   return (
-    <div className="absolute w-[300px]  top-10 right-10 z-50 bg-white p-6 rounded border border-gray-100">
-      <div className="flex flex-col">
+    <div className="absolute w-[400px]  top-10 right-10 z-50 bg-white p-6 rounded border border-gray-100">
+      <div className="flex flex-col gap-4">
         <div>
           <h2 className="text-dark">My Cart</h2>
         </div>
@@ -17,7 +17,7 @@ export default function CartDropdown() {
           return (
             <div
               key={i}
-              className="flex items-center gap-3 font-normal px-1 py-2"
+              className="flex justify-between items-center gap-3 font-normal px-1 py-2"
             >
               <div>
                 <img

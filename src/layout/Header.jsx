@@ -70,7 +70,7 @@ export default function Header() {
               Bandage
             </Link>
           </div>
-          <nav className="flex gap-3 items-center text-t-2 ">
+          <nav className="flex sm:flex-row flex-col justify-center gap-3 items-center text-t-2 ">
             <NavLink activeClassName="selected" to="/" exact>
               Home
             </NavLink>
@@ -114,7 +114,7 @@ export default function Header() {
             </button>
             {cartToggle && <CartDropdown />}
             <div className="min-w-max">
-              <FontAwesomeIcon icon={faHeart} /> 1
+              <FontAwesomeIcon icon={faHeart} /> 0
             </div>
           </div>
         </div>

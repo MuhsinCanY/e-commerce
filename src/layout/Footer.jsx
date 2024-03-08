@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <>
       <div className="custom-container-out bg-[#FAFAFA] ">
-        <div className="custom-container-in flex-col pb-0 pt-6 w-full">
+        <div className=" flex flex-col pb-0 pt-6 w-full">
           <div className="flex justify-between  container items-center my-6 mb-10">
             <Link
               to="/"
@@ -29,7 +29,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="custom-container-out bg-white ">
-        <div className="custom-container-in flex-col w-full">
+        <div className="container flex flex-col w-full">
           <div className="flex justify-between gap-10 flex-wrap my-8">
             <div className="flex flex-col gap-2 tracking-wider">
               <h3 className="text-bold font-[Montserrat] font-bold text-lg text-t-3 mb-2">
@@ -106,9 +106,9 @@ export default function Footer() {
               <div className="flex box-border bg-[#E6E6E6] border-[#E6E6E6] border-solid border-[1px] font-[Montserrat] font-medium text-sm text-t-2 tracking-wide rounded-lg">
                 <input
                   placeholder="Your Email"
-                  className="p-4 rounded-lg rounded-r-none bg-[#F9F9F9]"
+                  className="md:py-4 py-2 w-[200px] rounded-lg rounded-r-none bg-[#F9F9F9]"
                 ></input>
-                <button className="bg-t-1 p-4 text-white rounded-lg rounded-l-none">
+                <button className="bg-t-1 md:p-4 p-3 text-white rounded-lg rounded-l-none">
                   Subscribe
                 </button>
               </div>
