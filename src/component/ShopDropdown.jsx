@@ -74,6 +74,7 @@ const ShopDropdown = () => {
                       // to={`/shopping/${path[0]}/${path[1]}`}
                       to={`/shopping/${path[0]}/${category.id}/1`}
                       className="text-gray-500 dark:text-gray-400 cursor-pointer"
+                      onClick={() => setToggle(false)}
                     >
                       {category.title}
                     </Link>
@@ -96,6 +97,7 @@ const ShopDropdown = () => {
                     <Link
                       to={`/shopping/${path[0]}/${category.id}/1`}
                       className="text-gray-500 dark:text-gray-400 cursor-pointer"
+                      onClick={() => setToggle(false)}
                     >
                       {category.title}
                     </Link>

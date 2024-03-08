@@ -21,10 +21,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import Gravatar from 'react-gravatar'
 import { exitUser } from '../store/actions/userActions'
 import ShopDropdown from '../component/ShopDropdown'
+import { useState } from 'react'
+import CartDropdown from '../component/CartDropdown'
 
 export default function Header() {
+  const { cart } = useSelector((state) => state.shoppingReducer)
   const { response } = useSelector((store) => store.userReducer)
   const dispatch = useDispatch()
+  const [cartToggle, setCartToggle] = useState(false)
 
   const handleExit = () => {
     dispatch(exitUser())
@@ -35,12 +39,12 @@ export default function Header() {
       <div className="custom-container-out font-[Montserrat] font-bold text-[14px] bg-t-3">
         <div className="hidden lg:flex container flex flex-col lg:flex-row py-4 gap-8 min-w-max justify-between items-center text-white">
           <div className="flex gap-3 items-center">
-            <p>
+            <div>
               <FontAwesomeIcon icon={faPhone} /> (225) 555-0118
-            </p>
-            <p>
+            </div>
+            <div>
               <FontAwesomeIcon icon={faEnvelope} /> michelle.rivera@example.com
-            </p>
+            </div>
           </div>
 
           <p>Follow Us and get a chance to win 80% off</p>
@@ -81,8 +85,8 @@ export default function Header() {
               Team
             </NavLink>
           </nav>
-          <div className="flex gap-6 items-center text-t-1">
-            <p className="min-w-max">
+          <div className="flex relative gap-6 items-center text-t-1">
+            <div className="min-w-max">
               {response.token ? (
                 <div className="flex gap-2 items-center">
                   <Gravatar email={response.email} className="size-6" />
@@ -96,16 +100,22 @@ export default function Header() {
                   <Link to="/signup">Register</Link>
                 </div>
               )}
-            </p>
-            <p>
+            </div>
+            <div>
               <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </p>
-            <p className="min-w-max">
-              <FontAwesomeIcon icon={faBasketShopping} /> 1
-            </p>
-            <p className="min-w-max">
+            </div>
+            <button
+              className="min-w-max relative"
+              onClick={() => {
+                setCartToggle((p) => !p)
+              }}
+            >
+              <FontAwesomeIcon icon={faBasketShopping} /> {cart.length}
+            </button>
+            {cartToggle && <CartDropdown />}
+            <div className="min-w-max">
               <FontAwesomeIcon icon={faHeart} /> 1
-            </p>
+            </div>
           </div>
         </div>
       </div>
