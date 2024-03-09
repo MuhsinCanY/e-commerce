@@ -6,6 +6,27 @@ export const addToCartCreator = (cart) => ({
   payload: cart,
 })
 
+export const updateCartAction = (item) => (dispatch, getState) => {
+  const state = getState()
+  const cart = state.shoppingReducer.cart
+  const existingItemIndex = cart.findIndex(
+    (cartItem) => cartItem.product.id === item.product.id
+  )
+
+  if (existingItemIndex !== -1) {
+    const updatedCart = cart.map((cartItem, index) => {
+      if (index === existingItemIndex) {
+        return { ...cartItem, checked: item.checked }
+      }
+      return cartItem
+    })
+
+    dispatch(addToCartCreator(updatedCart))
+  } else {
+    dispatch(addToCartCreator([...cart, item]))
+  }
+}
+
 export const addToCartAction = (item) => (dispatch, getState) => {
   const state = getState()
   const cart = state.shoppingReducer.cart
@@ -44,6 +65,37 @@ export const deleteToCartAction = (item) => (dispatch, getState) => {
 
   for (let i = 0; i < cart.length; i++) {
     if (cart[i].product.id != item.product.id) {
+      newCart.push(cart[i])
+    }
+  }
+  dispatch(addToCartCreator(newCart))
+}
+
+export const increaseCountAction = (item) => (dispatch, getState) => {
+  const state = getState()
+  const cart = state.shoppingReducer.cart
+
+  let newCart = []
+
+  for (let i = 0; i < cart.length; i++) {
+    if (cart[i].product.id == item.product.id) {
+      newCart.push({ ...item, count: cart[i].count + 1 })
+    } else {
+      newCart.push(cart[i])
+    }
+  }
+  dispatch(addToCartCreator(newCart))
+}
+export const decreaseCountAction = (item) => (dispatch, getState) => {
+  const state = getState()
+  const cart = state.shoppingReducer.cart
+
+  let newCart = []
+
+  for (let i = 0; i < cart.length; i++) {
+    if (cart[i].product.id == item.product.id && cart[i].count > 1) {
+      newCart.push({ ...item, count: cart[i].count - 1 })
+    } else {
       newCart.push(cart[i])
     }
   }

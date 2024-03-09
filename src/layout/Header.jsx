@@ -111,9 +111,10 @@ export default function Header() {
                 </div>
               ) : (
                 <div>
-                  <FontAwesomeIcon icon={faUser} />{' '}
-                  <Link to="/login">Login</Link> /{' '}
-                  <Link to="/signup">Register</Link>
+                  <Link to="/login">
+                    <FontAwesomeIcon icon={faUser} /> Login
+                  </Link>{' '}
+                  / <Link to="/signup">Register</Link>
                 </div>
               )}
             </div>
