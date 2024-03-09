@@ -21,10 +21,7 @@ export default function ProductCard({ product }) {
   }
 
   return (
-    <div
-      // onClick={handleClick}
-      className="cursor-pointer flex grow basis-[250px] max-w-[500px] flex-col gap-3 mb-4 text-center font-[Montserrat] font-bold"
-    >
+    <div className="cursor-pointer flex grow basis-[250px] max-w-[500px] flex-col gap-3 mb-4 text-center font-[Montserrat] font-bold">
       <div onClick={handleClick} className="flex flex-col gap-4">
         <img src={images[0].url} className="object-cover " />
         <h4 className="text-[16px] pt-3">{name}</h4>

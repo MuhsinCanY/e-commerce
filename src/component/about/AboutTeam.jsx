@@ -1,4 +1,3 @@
-import React from 'react'
 import AboutTeamCard from './AboutTeamCard'
 
 export default function AboutTeam() {

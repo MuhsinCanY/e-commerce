@@ -2,13 +2,15 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteToCartAction } from '../store/actions/shoppingActions'
+import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 
-export default function CartDropdown() {
+export default function CartDropdown({ setCartToggle }) {
   const dispatch = useDispatch()
   const { cart } = useSelector((state) => state.shoppingReducer)
+
   return (
-    <div className="absolute w-[400px]  top-10 right-10 z-50 bg-white p-6 rounded border border-gray-100">
-      <div className="flex flex-col gap-4">
+    <div className="absolute w-[400px]  top-10 right-10 z-50 bg-white py-6 pl-6 rounded border border-gray-100">
+      <div className="flex flex-col gap-4 max-h-[600px] overflow-y-auto pr-6 scroll-smooth">
         <div>
           <h2 className="text-dark">My Cart</h2>
         </div>
@@ -43,14 +45,17 @@ export default function CartDropdown() {
         })}
       </div>
       {cart.length != 0 && (
-        <button
-          onClick={() => {
-            console.log('Go to the Orderrr')
-          }}
-          className="bg-t-1 text-white rounded text-center px-2 py-1"
-        >
-          Complete Order
-        </button>
+        <div className="mt-6">
+          <Link
+            to="/shoppingCart"
+            onClick={() => {
+              setCartToggle(false)
+            }}
+            className="bg-t-1 text-white rounded text-center px-2 py-1 "
+          >
+            Complete Order
+          </Link>
+        </div>
       )}
     </div>
   )

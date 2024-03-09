@@ -1,4 +1,8 @@
-import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min'
+import {
+  Redirect,
+  Route,
+  Switch,
+} from 'react-router-dom/cjs/react-router-dom.min'
 import Home from '../pages/Home'
 import About from '../pages/About'
 import Shop from '../pages/Shop'
@@ -7,8 +11,12 @@ import Team from '../pages/Team'
 import Product from '../pages/Product'
 import Singup from '../pages/Signup'
 import Login from '../pages/Login'
+import ShoppingCart from '../pages/ShoppingCart'
+import { useSelector } from 'react-redux'
 
 export default function PageContent() {
+  const { isLogin } = useSelector((state) => state.userReducer)
+
   return (
     <Switch>
       <Route path="/" exact>
@@ -28,6 +36,9 @@ export default function PageContent() {
       </Route>
       <Route path="/team" exact>
         <Team />
+      </Route>
+      <Route path="/shoppingCart">
+        {isLogin ? <ShoppingCart /> : <Redirect to="/login" />}
       </Route>
       <Route path="/:category/:productId/:slug" exact>
         <Product />

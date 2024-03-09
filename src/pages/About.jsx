@@ -1,4 +1,3 @@
-import React from 'react'
 import AboutHeader from '../component/about/AboutHeader'
 import AboutContent from '../component/about/AboutContent'
 import AboutStats from '../component/about/AboutStats'
@@ -9,8 +8,7 @@ import AboutTestimonials from '../component/about/AboutTestimonials'
 
 export default function About() {
   return (
-    // container bg-red-400
-    <div className="">
+    <>
       <AboutHeader />
       <AboutContent />
       <AboutStats />
@@ -18,6 +16,6 @@ export default function About() {
       <AboutTeam />
       <AboutClients />
       <AboutTestimonials />
-    </div>
+    </>
   )
 }

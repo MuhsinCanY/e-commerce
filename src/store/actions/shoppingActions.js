@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify'
 import { ShoppingActions } from '../reducers/shoppingReducer'
 
 export const addToCartCreator = (cart) => ({
@@ -24,6 +25,15 @@ export const addToCartAction = (item) => (dispatch, getState) => {
   } else {
     dispatch(addToCartCreator([...cart, item]))
   }
+  toast.success('Added to Cart', {
+    position: 'top-right',
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: false,
+    pauseOnHover: false,
+    draggable: true,
+    theme: 'light',
+  })
 }
 
 export const deleteToCartAction = (item) => (dispatch, getState) => {
