@@ -13,7 +13,6 @@ function App() {
 
   useEffect(() => {
     if (token) {
-      console.log('lalallaallala')
       dispatch(doAutoLoginAction(token))
     }
   }, [])

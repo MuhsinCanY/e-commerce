@@ -1,8 +1,7 @@
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const src =
-  'https://s3-alpha-sig.figma.com/img/8b0c/0f76/c949a2cffacf01d40c82241e905719cb?Expires=1709510400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=FMoO5QNWdGm8uiNvgi0dkx-pZIUWJ0~lQ~GlOUjoX-KMgRxtUxEuQXL~4EUEqVmmSdNoN0jr2790oOwzWReFnczLeeC4jk5jUH5gasA0~qaKavsjTC6VusNGtDBP5u-8-z5f47eTaieRvhBU8~j6zOMHaypLgC8-5NohMq--41k9K7TpKDCxcCP8zUXlZiO3mbE-H-CUNEBKEpzxBC-UzV5pAQ9ycxcMadwadfDdLgSoT9-7Fb6Krk503ixMYoTHTPdcrM5aCNpc5JOAKS~XaodQJKxv5A9-5B~Axhw-GSD7SlEL03~UtKd5~y3rb57QvYZpn1Z~-xD6VIOtLb8SPw__'
+const src = '/assets/product/product-des.png'
 
 export default function ProductDescription() {
   return (

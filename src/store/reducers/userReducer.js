@@ -9,18 +9,30 @@ const initialState = {
   response: {},
   error: {},
   loading: false,
+  isLogin: false,
 }
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case UserActions.getUserData:
-      return { ...state, response: action.payload, error: {} }
+      return {
+        ...state,
+        response: action.payload,
+        error: {},
+        isLogin: true,
+      }
     case UserActions.getUserError:
-      return { ...state, error: action.payload, response: {} }
+      return { ...state, error: action.payload, response: {}, isLogin: false }
     case UserActions.setLoadingUser:
       return { ...state, loading: action.payload }
     case UserActions.exitUser:
-      return { ...state, response: {}, error: {}, loading: false }
+      return {
+        ...state,
+        response: {},
+        error: {},
+        loading: false,
+        isLogin: false,
+      }
     default:
       return state
   }

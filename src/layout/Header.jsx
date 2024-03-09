@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   faEnvelope,
   faHeart,
@@ -21,7 +20,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Gravatar from 'react-gravatar'
 import { exitUser } from '../store/actions/userActions'
 import ShopDropdown from '../component/ShopDropdown'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import CartDropdown from '../component/CartDropdown'
 
 export default function Header() {
@@ -34,8 +33,23 @@ export default function Header() {
     dispatch(exitUser())
   }
 
+  const cartRef = useRef(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (cartRef.current && !cartRef.current.contains(event.target)) {
+        setCartToggle(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [cartRef])
+
   return (
-    <>
+    <div ref={cartRef}>
       <div className="custom-container-out font-[Montserrat] font-bold text-[14px] bg-t-3">
         <div className="hidden lg:flex container flex flex-col lg:flex-row py-4 gap-8 min-w-max justify-between items-center text-white">
           <div className="flex gap-3 items-center">
@@ -70,7 +84,7 @@ export default function Header() {
               Bandage
             </Link>
           </div>
-          <nav className="flex gap-3 items-center text-t-2 ">
+          <nav className="flex sm:flex-row flex-col justify-center gap-3 items-center text-t-2 ">
             <NavLink activeClassName="selected" to="/" exact>
               Home
             </NavLink>
@@ -91,13 +105,16 @@ export default function Header() {
                 <div className="flex gap-2 items-center">
                   <Gravatar email={response.email} className="size-6" />
                   <p>{response.name}</p>
-                  <button onClick={handleExit}>Exit</button>
+                  <Link to="/" onClick={handleExit}>
+                    Exit
+                  </Link>
                 </div>
               ) : (
                 <div>
-                  <FontAwesomeIcon icon={faUser} />{' '}
-                  <Link to="/login">Login</Link> /{' '}
-                  <Link to="/signup">Register</Link>
+                  <Link to="/login">
+                    <FontAwesomeIcon icon={faUser} /> Login
+                  </Link>{' '}
+                  / <Link to="/signup">Register</Link>
                 </div>
               )}
             </div>
@@ -112,13 +129,13 @@ export default function Header() {
             >
               <FontAwesomeIcon icon={faBasketShopping} /> {cart.length}
             </button>
-            {cartToggle && <CartDropdown />}
+            {cartToggle && <CartDropdown setCartToggle={setCartToggle} />}
             <div className="min-w-max">
-              <FontAwesomeIcon icon={faHeart} /> 1
+              <FontAwesomeIcon icon={faHeart} /> 0
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }

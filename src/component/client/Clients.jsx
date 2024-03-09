@@ -5,7 +5,7 @@ export default function Clients({ bg = 'bg-white' }) {
   return (
     <div className={`${bg} py-10`}>
       <div
-        className="container flex gap-3 flex-wrap justify-between 
+        className="container p-0 flex gap-3 flex-wrap justify-between 
       "
       >
         <ClientsCard imageSource="/assets/clients/client0.png" />

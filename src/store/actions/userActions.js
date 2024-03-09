@@ -26,23 +26,22 @@ export const exitUser = () => (dispatch) => {
   dispatch(exitUserCreator())
 }
 
-export const doPostRequestAction =
-  (payload, history) => (dispatch, getState) => {
-    dispatch(setLoadingUserCreator(true))
-    API.post('/login', payload)
-      .then((res) => {
-        dispatch(getUserDataCreator(res.data))
-        localStorage.setItem('token', res.data.token)
-        history.push('/')
-      })
-      .catch((err) => {
-        dispatch(userErrorCreator(err))
-        toast(err.response.data.message)
-      })
-      .finally(() => {
-        dispatch(setLoadingUserCreator(false))
-      })
-  }
+export const doPostRequestAction = (payload, history) => (dispatch) => {
+  dispatch(setLoadingUserCreator(true))
+  API.post('/login', payload)
+    .then((res) => {
+      dispatch(getUserDataCreator(res.data))
+      localStorage.setItem('token', res.data.token)
+      history.push('/')
+    })
+    .catch((err) => {
+      dispatch(userErrorCreator(err))
+      toast(err.response.data.message)
+    })
+    .finally(() => {
+      dispatch(setLoadingUserCreator(false))
+    })
+}
 
 export const doAutoLoginAction = (token) => (dispatch) => {
   API.get('/verify', {

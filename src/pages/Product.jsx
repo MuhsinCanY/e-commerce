@@ -7,7 +7,6 @@ import ProductHeader from '../component/product/ProductHeader'
 export default function Product() {
   const { category, productId, slug } = useParams()
 
-  console.log(category, productId, slug)
   return (
     <div>
       <ProductHeader />

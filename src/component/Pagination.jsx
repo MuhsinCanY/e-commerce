@@ -31,12 +31,12 @@ export default function Pagination({ category, gender, filter, sort, page }) {
       <ReactPaginate
         currentPage={page}
         breakLabel="..."
-        nextLabel="next >"
+        nextLabel=">"
         onPageChange={handlePageClick}
         pageRangeDisplayed={3}
         marginPagesDisplayed={1}
         pageCount={pageCount}
-        previousLabel="< previous"
+        previousLabel="<"
         renderOnZeroPageCount={null}
         pageClassName="page-item"
         pageLinkClassName="page-link"

@@ -6,9 +6,6 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const imgsrc =
-  'https://s3-alpha-sig.figma.com/img/0bec/d76f/b529bdb1f9ac06ee979d8665aade6757?Expires=1709510400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=VgH1rwKx25T0JZSP3CU2Kncr83NZTAQmOQxpol109MoU9rFMgfXXbR9~p8nLn2-LvHdlMFQyfcCfvkW6P2Fyypd8bcFFCL~PSb0VNHl8ay4TypcHwdF4AW8IWwjnbBa2opHP-Y3xrwUlPob~U7a-o4wbvdZNAx6dSbT7CtGjgpCBaL1DFrZEaGgz5~RO~hbnCL1pL59AgZqem5IwEdk1dzTbdgP4gDqVHkv6eQ44SrtSeGRd0nVIoHb41vbBhym3o4S3esp1cYgXUERoY-eL23aIVpgvYHDkP35v0t~qBGyhO-lIMx-S437BqkKAzUwyFt7MYLe2pM2O3~lNwZVScw__'
-
 export default function ContactHeader() {
   return (
     <div className=" bg-white font-[Montserrat] font-bold text-t-3 py-6">
@@ -35,7 +32,7 @@ export default function ContactHeader() {
           </div>
         </div>
         <div className="relative flex-1 ">
-          <div className="w-full h-[400px]"></div>
+          <div className="w-full h-[600px]"></div>
           <img
             className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-2/3 z-0 md:size-[450px] size-[290px]"
             src="/assets/about/header/EllipseBig.svg"
@@ -60,8 +57,8 @@ export default function ContactHeader() {
             src="/assets/about/header/EllipseSmall.svg"
           />
           <img
-            className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[400px]"
-            src={imgsrc}
+            className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-[700px]"
+            src="/assets/contact/contact-h.png"
           />
         </div>
       </div>

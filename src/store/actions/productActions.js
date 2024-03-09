@@ -9,6 +9,7 @@ export const getProductsCreator = (data) => ({
 export const getFiltredProductsAction =
   (category, filter, sort, offset = 0) =>
   (dispatch) => {
+    dispatch(getProductsCreator([]))
     API.get('/products', {
       params: {
         category: category,

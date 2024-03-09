@@ -19,6 +19,10 @@
   }
 }
 
+a:hover {
+  color: initial;
+}
+
 input:focus {
   outline: none;
 }
