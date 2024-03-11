@@ -3,12 +3,15 @@ import ShoppingCartSummary from '../component/shoppingCart/ShoppingCartSummary'
 
 export default function ShoppingCart() {
   return (
-    <div className="container flex gap-4 py-6">
-      <div className="basis-3/4  py-6 ">
-        <ShoppingCartMain />
-      </div>
-      <div className="basis-1/4 bg-t-2 py-6">
-        <ShoppingCartSummary />
+    <div className="py-10">
+      <h1 className="container font-bold text-2xl ">My Cart</h1>
+      <div className="container flex-col tracking-wider  lg:flex-row flex gap-4 py-6">
+        <div className="basis-2/3  ">
+          <ShoppingCartMain />
+        </div>
+        <div className="basis-1/3">
+          <ShoppingCartSummary />
+        </div>
       </div>
     </div>
   )

@@ -46,7 +46,7 @@ export default function Login() {
                 type="text"
                 value="customer@commerce.com"
                 placeholder="Email"
-                className="mt-1 block w-full rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
+                className="input-field"
                 {...register('email', {
                   required: 'Email is required',
                   pattern: {
@@ -66,7 +66,7 @@ export default function Login() {
                 value="123456"
                 type="password"
                 placeholder="Password"
-                className="mt-1 block w-full rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
+                className="input-field"
                 {...register('password', {
                   required: 'Password is required',
                 })}
