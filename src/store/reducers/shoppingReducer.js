@@ -2,6 +2,7 @@ export const ShoppingActions = {
   addToCart: 'ADD_TO_CART',
   setTotalPrice: 'SET_TOTAL_PRICE',
   setAddress: 'SET_ADDRESS',
+  setCart: 'SET_CART',
 }
 
 const initialState = {
@@ -19,6 +20,8 @@ const shoppingReducer = (state = initialState, action) => {
       return { ...state, totalPrice: action.payload }
     case ShoppingActions.setAddress:
       return { ...state, address: action.payload }
+    case ShoppingActions.setCart:
+      return { ...state, cart: action.payload }
     default:
       return state
   }

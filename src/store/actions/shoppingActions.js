@@ -18,6 +18,11 @@ export const setAddressCreator = (address) => ({
   payload: address,
 })
 
+export const setCartCreator = (cart) => ({
+  type: ShoppingActions.setCart,
+  payload: cart,
+})
+
 export const setTotalPriceAction = () => (dispatch, getState) => {
   const state = getState()
   const cart = state.shoppingReducer.cart
@@ -133,21 +138,152 @@ export const decreaseCountAction = (item) => (dispatch, getState) => {
   dispatch(addToCartCreator(newCart))
 }
 
-export const doPostRequestAddressAction = (payload) => (dispatch, getState) => {
-  const state = getState()
-  const address = state.shoppingReducer.address
-  console.log(address)
+export const doPostRequestAddressAction = (payload) => () => {
   API.post('/user/address', payload)
     .then((res) => {
-      // dispatch(getUserDataCreator(res.data))
-      console.log(res)
+      console.log(res.data)
+      toast.success('Address added succesfully', {
+        position: 'bottom-right',
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: true,
+        theme: 'light',
+      })
+      getAddressAction()
     })
     .catch((err) => {
-      // dispatch(userErrorCreator(err))
+      console.log(err)
+      toast(err.response.data.message)
+    })
+}
+
+export const doPutRequestAddressAction = (payload) => () => {
+  API.put('/user/address', payload)
+    .then((res) => {
+      console.log(res.data)
+      toast.success('Address updated succesfully', {
+        position: 'bottom-right',
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: true,
+        theme: 'light',
+      })
+      getAddressAction()
+    })
+    .catch((err) => {
+      console.log(err)
+      toast(err.response.data.message)
+    })
+}
+
+export const deleteAddressAction = (id) => () => {
+  API.delete(`/user/address/${id}`)
+    .then((res) => {
+      toast.success(res.data, {
+        position: 'bottom-right',
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: true,
+        theme: 'light',
+      })
+    })
+    .catch((err) => {
       console.log(err)
       toast(err.response.data.message)
     })
     .finally(() => {
-      // dispatch(setLoadingUserCreator(false))
+      getAddressAction()
+    })
+}
+
+export const getAddressAction = () => (dispatch) => {
+  API.get('/user/address')
+    .then((res) => {
+      dispatch(setAddressCreator(res.data))
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
+export const doPostRequestCardAction = (payload) => () => {
+  API.post('/user/card', payload)
+    .then((res) => {
+      console.log(res.data)
+      toast.success('Card added succesfully', {
+        position: 'bottom-right',
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: true,
+        theme: 'light',
+      })
+      getCardAction()
+    })
+    .catch((err) => {
+      console.log(err)
+      toast(err.response.data.message)
+    })
+}
+
+export const getCardAction = () => (dispatch) => {
+  API.get('/user/card')
+    .then((res) => {
+      dispatch(setCartCreator(res.data))
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
+export const deleteCardAction = (id) => () => {
+  API.delete(`/user/card/${id}`)
+    .then((res) => {
+      toast.success(res.data, {
+        position: 'bottom-right',
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: true,
+        theme: 'light',
+      })
+    })
+    .catch((err) => {
+      console.log(err)
+      toast(err.response.data.message)
+    })
+    .finally(() => {
+      setTimeout(() => {
+        getCardAction()
+      }, 2000)
+    })
+}
+
+export const doPutRequestCardAction = (payload) => () => {
+  API.put('/user/card', payload)
+    .then((res) => {
+      console.log(res.data)
+      toast.success('Card updated succesfully', {
+        position: 'bottom-right',
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: true,
+        theme: 'light',
+      })
+      getAddressAction()
+    })
+    .catch((err) => {
+      console.log(err)
+      toast(err.response.data.message)
     })
 }
