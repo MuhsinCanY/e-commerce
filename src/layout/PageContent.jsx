@@ -13,6 +13,7 @@ import Singup from '../pages/Signup'
 import Login from '../pages/Login'
 import ShoppingCart from '../pages/ShoppingCart'
 import { useSelector } from 'react-redux'
+import Order from '../pages/Order'
 
 export default function PageContent() {
   const { isLogin } = useSelector((state) => state.userReducer)
@@ -39,6 +40,9 @@ export default function PageContent() {
       </Route>
       <Route path="/shoppingCart">
         {isLogin ? <ShoppingCart /> : <Redirect to="/login" />}
+      </Route>
+      <Route path="/order">
+        {isLogin ? <Order /> : <Redirect to="/login" />}
       </Route>
       <Route path="/:category/:productId/:slug" exact>
         <Product />
