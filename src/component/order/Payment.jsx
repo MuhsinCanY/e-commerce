@@ -45,9 +45,6 @@ const Payment = () => {
       dispatch(doPostRequestCardAction(data))
     }
     setShowModal(false)
-    setTimeout(() => {
-      dispatch(getCardAction())
-    }, 2000)
   }
 
   useEffect(() => {
@@ -82,9 +79,6 @@ const Payment = () => {
 
   const handleDelete = (card) => {
     dispatch(deleteCardAction(card.id))
-    setTimeout(() => {
-      dispatch(getCardAction())
-    }, 2000)
   }
 
   return (

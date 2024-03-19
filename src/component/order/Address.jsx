@@ -64,16 +64,10 @@ const Address = () => {
     }
     setisEditing({ ...isEditing, isEditing: false, id: 0, user_id: 0 })
     setShowModal(false)
-    setTimeout(function () {
-      dispatch(getAddressAction())
-    }, 2000)
   }
 
   const handleDelete = (address) => {
     dispatch(deleteAddressAction(address.id))
-    setTimeout(function () {
-      dispatch(getAddressAction())
-    }, 2000)
   }
 
   useEffect(() => {

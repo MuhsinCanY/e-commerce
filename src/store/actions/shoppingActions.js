@@ -2,6 +2,7 @@ import { toast } from 'react-toastify'
 import { ShoppingActions } from '../reducers/shoppingReducer'
 import { API } from '../../helper/api'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
+import { toasty } from '../../helper/toast'
 
 export const addToCartCreator = (cart) => ({
   type: ShoppingActions.addToCart,
@@ -138,20 +139,12 @@ export const decreaseCountAction = (item) => (dispatch, getState) => {
   dispatch(addToCartCreator(newCart))
 }
 
-export const doPostRequestAddressAction = (payload) => () => {
+export const doPostRequestAddressAction = (payload) => (dispatch) => {
   API.post('/user/address', payload)
     .then((res) => {
       console.log(res.data)
-      toast.success('Address added succesfully', {
-        position: 'bottom-right',
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: false,
-        draggable: true,
-        theme: 'light',
-      })
-      getAddressAction()
+      toasty('Address added succesfully', 'bottom-right')
+      dispatch(getAddressAction())
     })
     .catch((err) => {
       console.log(err)
@@ -159,20 +152,11 @@ export const doPostRequestAddressAction = (payload) => () => {
     })
 }
 
-export const doPutRequestAddressAction = (payload) => () => {
+export const doPutRequestAddressAction = (payload) => (dispatch) => {
   API.put('/user/address', payload)
     .then((res) => {
-      console.log(res.data)
-      toast.success('Address updated succesfully', {
-        position: 'bottom-right',
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: false,
-        draggable: true,
-        theme: 'light',
-      })
-      getAddressAction()
+      toasty('Address updated succesfully', 'bottom-right')
+      dispatch(getAddressAction())
     })
     .catch((err) => {
       console.log(err)
@@ -180,25 +164,15 @@ export const doPutRequestAddressAction = (payload) => () => {
     })
 }
 
-export const deleteAddressAction = (id) => () => {
+export const deleteAddressAction = (id) => (dispatch) => {
   API.delete(`/user/address/${id}`)
     .then((res) => {
-      toast.success(res.data, {
-        position: 'bottom-right',
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: false,
-        draggable: true,
-        theme: 'light',
-      })
+      toasty(res.data, 'bottom-right')
+      dispatch(getAddressAction())
     })
     .catch((err) => {
       console.log(err)
       toast(err.response.data.message)
-    })
-    .finally(() => {
-      getAddressAction()
     })
 }
 
@@ -206,26 +180,19 @@ export const getAddressAction = () => (dispatch) => {
   API.get('/user/address')
     .then((res) => {
       dispatch(setAddressCreator(res.data))
+      dispatch(getCardAction())
     })
     .catch((err) => {
       console.log(err)
     })
 }
 
-export const doPostRequestCardAction = (payload) => () => {
+export const doPostRequestCardAction = (payload) => (dispatch) => {
   API.post('/user/card', payload)
     .then((res) => {
       console.log(res.data)
-      toast.success('Card added succesfully', {
-        position: 'bottom-right',
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: false,
-        draggable: true,
-        theme: 'light',
-      })
-      getCardAction()
+      toasty('Card added succesfully', 'bottom-right')
+      dispatch(getCardAction())
     })
     .catch((err) => {
       console.log(err)
@@ -243,44 +210,24 @@ export const getCardAction = () => (dispatch) => {
     })
 }
 
-export const deleteCardAction = (id) => () => {
+export const deleteCardAction = (id) => (dispatch) => {
   API.delete(`/user/card/${id}`)
     .then((res) => {
-      toast.success(res.data, {
-        position: 'bottom-right',
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: false,
-        draggable: true,
-        theme: 'light',
-      })
+      toasty(res.data, 'bottom-right')
+      dispatch(getCardAction())
     })
     .catch((err) => {
       console.log(err)
       toast(err.response.data.message)
     })
-    .finally(() => {
-      setTimeout(() => {
-        getCardAction()
-      }, 2000)
-    })
 }
 
-export const doPutRequestCardAction = (payload) => () => {
+export const doPutRequestCardAction = (payload) => (dispatch) => {
   API.put('/user/card', payload)
     .then((res) => {
       console.log(res.data)
-      toast.success('Card updated succesfully', {
-        position: 'bottom-right',
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: false,
-        draggable: true,
-        theme: 'light',
-      })
-      getAddressAction()
+      toasty('Card updated succesfully', 'bottom-right')
+      dispatch(getAddressAction())
     })
     .catch((err) => {
       console.log(err)
